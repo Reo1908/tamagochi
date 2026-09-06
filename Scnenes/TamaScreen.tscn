@@ -1,3 +1,95 @@
 [gd_scene format=3 uid="uid://cf708qpwteywp"]
 
+[ext_resource type="Texture2D" uid="uid://bi5lyk5834ljs" path="res://images/main_character.png" id="1_xw3yo"]
+[ext_resource type="Texture2D" uid="uid://bvudymj7d5o54" path="res://images/main_pressed.png" id="2_4iuj2"]
+[ext_resource type="Script" uid="uid://5wb5n6xm3sgl" path="res://scripts/TamaScreen_interactions.gd" id="2_dj3w1"]
+[ext_resource type="Texture2D" uid="uid://c65vkckfvlsir" path="res://images/main_reaction_love.png" id="3_dj3w1"]
+[ext_resource type="Script" uid="uid://d2so6bwt1o1su" path="res://scripts/TamaScreen_buttons.gd" id="5_28rs2"]
+[ext_resource type="Texture2D" uid="uid://bcbtqepgprsa8" path="res://images/58964.png" id="5_n3wpy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28rs2"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="MeshTexture" id="MeshTexture_h70m3"]
+
 [node name="TamaScreen" type="Node2D" unique_id=339707847]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=595572524]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.9262248, 0.92622477, 0.92622477, 1)
+
+[node name="Main" type="TextureRect" parent="ColorRect" unique_id=1901519772]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -149.0
+offset_right = 149.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xw3yo")
+script = ExtResource("2_dj3w1")
+
+[node name="Main_reaction" type="TextureRect" parent="ColorRect" unique_id=736303717]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -149.0
+offset_right = 149.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4iuj2")
+
+[node name="Reaction" type="TextureRect" parent="ColorRect" unique_id=483866591]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 704.0
+offset_top = 81.0
+offset_right = 859.0
+offset_bottom = 236.0
+texture = ExtResource("3_dj3w1")
+
+[node name="stats_button" type="Button" parent="ColorRect" unique_id=212826488]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 38.0
+offset_right = 127.14285
+offset_bottom = 126.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_28rs2")
+icon = SubResource("MeshTexture_h70m3")
+script = ExtResource("5_28rs2")
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/stats_button" unique_id=1684746904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -12.804123
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_n3wpy")
+expand_mode = 1
+
+[connection signal="pressed" from="ColorRect/stats_button" to="ColorRect/stats_button" method="_on_button_stats_pressed"]
